@@ -15,7 +15,7 @@ pipeline {
                      }
                     else {
                         echo "Exists, so updating"
-                        sh "/var/lib/jenkins/bin/oci resource-manager stack update --config-source terraform/stack1.zip --display-name ${JOB_NAME} --variables \'{\"compartment_ocid\":\"ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a\"}\' --stack-id ${env.stackOcid} "
+                        sh "/var/lib/jenkins/bin/oci resource-manager stack update --force true --config-source terraform/stack1.zip --display-name ${JOB_NAME} --variables \'{\"compartment_ocid\":\"ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a\"}\' --stack-id ${env.stackOcid} "
                     }
 
                 }
