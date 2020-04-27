@@ -9,7 +9,7 @@ pipeline {
                 compartment = 'ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a'
                 region = 'eu-london-1'
                 ad = 'uFjs:UK-LONDON-1-AD-1'
-                image = 'ocid1.image.oc1.eu-frankfurt-1.aaaaaaaaitzn6tdyjer7jl34h2ujz74jwy5nkbukbh55ekp6oyzwrtfa4zma'
+                image = 'ocid1.image.oc1.uk-london-1.aaaaaaaaz57okycdlykwzwegouf6p4fl6leo3mf7zs2setxxbls26hctpkgq'
             }
             steps {
                 script {
