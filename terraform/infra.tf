@@ -53,7 +53,7 @@ resource "oci_core_instance" "TFInstance" {
 
   source_details {
     source_type = "image"
-    source_id = "${var.InstanceImageOCID[var.region]}"
+    source_id = "${var.imageOCID}"
 
     # Apply this to set the size of the boot volume that's created for this instance.
     # Otherwise, the default boot volume size of the image is used.
