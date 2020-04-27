@@ -14,7 +14,7 @@ pipeline {
 
                     if(env.stackOcid == '' || env.stackOcid == null){
                         echo "Does not exist"
-                        sh '/var/lib/jenkins/bin/oci resource-manager stack create -c ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a --config-source terraform/stack1.zip --display-name ${JOB_NAME} --variables \'{\"ssh_public_key\":\"${env.ociSSL}\",\"compartment_ocid\":\"ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a\"}\' | jq \'.data.id\''
+                        sh '/var/lib/jenkins/bin/oci resource-manager stack create -c ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a --config-source terraform/stack1.zip --display-name ${JOB_NAME} --variables \'{\"ssh_public_key\":\"'+'${env.ociSSL}'+'\",\"compartment_ocid\":\"ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a\"}\' | jq \'.data.id\''
                      }
                     else {
                         echo "Exists, so updating"
