@@ -15,16 +15,15 @@ pipeline {
                 script {
                     echo "stack: ${env.stackOcid}"
                     echo "SSL: ${env.ociSSL}"
-                    sh 'zip stack.zip terraform/infra.tf terraform/variables.tf'
+                    sh 'cd terraform'
+                    sh 'zip stack.zip infra.tf variables.tf'
                     if(env.stackOcid == '' || env.stackOcid == null){
                         echo "Does not exist"
-                        sh '/var/lib/jenkins/bin/oci resource-manager stack create -c '+env.compartment+' --config-source stack.zip --display-name ${JOB_NAME} --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+'\"}\' | jq \'.data.id\''
+                        sh '/var/lib/jenkins/bin/oci resource-manager stack create -c '+env.compartment+' --config-source terraform/stack.zip --display-name ${JOB_NAME} --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+'\"}\' | jq \'.data.id\''
                      }
                     else {
                         echo "Exists, so updating"
-                        sh 'unzip stack.zip'
-                        sh 'ls -l'
-                        sh '/var/lib/jenkins/bin/oci resource-manager stack update --force --config-source stack.zip --display-name ${JOB_NAME} --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+'\"}\' --stack-id '+env.stackOcid
+                        sh '/var/lib/jenkins/bin/oci resource-manager stack update --force --config-source terraform/stack.zip --display-name ${JOB_NAME} --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+'\"}\' --stack-id '+env.stackOcid
                     }
 
                 }
