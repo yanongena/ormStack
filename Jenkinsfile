@@ -7,8 +7,8 @@ pipeline {
                 stackOcid = "${sh(returnStdout:true,script: '/var/lib/jenkins/bin/oci resource-manager stack list -c ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a | jq \'.data[] | select(.\"display-name\" == \""+env.JOB_NAME+"\")\' | jq \'.id\'')}"
                 ociSSL = credentials("ociSSL")
                 compartment = 'ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a'
-                region = 'eu-frankfurt-1'
-                ad = 'uFjs:EU-FRANKFURT-1-AD-2'
+                region = 'eu-london-1'
+                ad = 'uFjs:UK-LONDON-1-AD-1'
                 image = 'ocid1.image.oc1.eu-frankfurt-1.aaaaaaaaitzn6tdyjer7jl34h2ujz74jwy5nkbukbh55ekp6oyzwrtfa4zma'
             }
             steps {
