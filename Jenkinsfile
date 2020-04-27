@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script{
                     echo "Deploying stack ${env.stackOcid}"
-                    sh "/var/lib/jenkins/bin/oci resource-manager job create --stack-id ${env.stackOcid}"
+                    sh "/var/lib/jenkins/bin/oci resource-manager job create --operation apply --stack-id ${env.stackOcid}"
                 }
             }
         }
