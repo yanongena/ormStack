@@ -1,5 +1,5 @@
 provider "oci" {
-  region = "${var.region}"
+
 }
 
 resource "oci_core_virtual_network" "ExampleVCN" {
