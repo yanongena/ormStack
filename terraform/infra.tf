@@ -1,5 +1,5 @@
 provider "oci" {
-
+  region    = "EU-FRANKFURT"
 }
 
 resource "oci_core_virtual_network" "ExampleVCN" {
