@@ -83,7 +83,7 @@ resource "null_resource" "remote-exec" {
     connection {
       agent       = false
       timeout     = "30m"
-      host        = oci_core_instance.TFInstance.*.public_ip[0]
+      host        = "${oci_core_instance.TFInstance.*.public_ip[0]}"
       user        = "opc"
       private_key = file("${var.ssh_public_key}")
     }
