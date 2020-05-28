@@ -9,6 +9,11 @@ resource "oci_core_virtual_network" "ExampleVCN" {
   dns_label = "tfexamplevcn"
 }
 
+resource "tls_private_key" "key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "oci_core_subnet" "ExampleSubnet" {
   availability_domain = "${var.localAD}"
   cidr_block = "10.1.20.0/24"
@@ -68,7 +73,7 @@ resource "oci_core_instance" "TFInstance" {
   #preserve_boot_volume = true
 
   metadata = {
-    ssh_authorized_keys = "${var.ssh_public_key}"
+    ssh_authorized_keys = "${tls_private_key.key.public_key_openssh}"
 
   }
   timeouts {
@@ -85,7 +90,7 @@ resource "null_resource" "remote-exec" {
       timeout     = "30m"
       host        = "${oci_core_instance.TFInstance.*.public_ip[0]}"
       user        = "opc"
-      private_key = "${var.ssh_private_key}"
+      private_key = "${tls_private_key.key.private_key_pem}"
     }
 
     inline = [
