@@ -15,6 +15,10 @@ variable "ssh_public_key" {
   default = "ssh-rsa <public_key_value>"
 }
 
+variable "ssh_private_key" {
+  default = ""
+}
+
 # Defines the number of instances to deploy
 variable "NumInstances" {
   default = "1"
@@ -28,3 +32,4 @@ variable "InstanceShape" {
 variable "localAD" {
   default = "<AD_name>"
 }
+

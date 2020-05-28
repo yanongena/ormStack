@@ -1,6 +1,0 @@
-{"compartment_ocid": "ocid1.compartment.oc1..aaaaaaaadykmnzg32nkpqb7qzhckomnecdq2w3dautxq5liwjhzwxnfd2r3a",
-  "region": "eu-frankfurt-1",
-  "InstanceImageOCID": {"eu-frankfurt-1": "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaaitzn6tdyjer7jl34h2ujz74jwy5nkbukbh55ekp6oyzwrtfa4zma"},
-  "ssh_public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsNFzuBcsKAFacHbrkZYxIpSq+X1qhDTZoxsrLG1ajxjrWCk7Fdx4Hcp9/TVAIvKmcUto0J4JY0R8Q1WooMK77PUl8zhYwMuY96U6PR1G4ANEi5gOnywB+M7DCigYQJLSDSe78/Uba9I+OSZ1YVEEbs6foG4x3tTpUsuoJtoLhRW35Wu3MMYOG0vxv7XOPYwLYnzfXuDib/6YtXdbTce54oyq0DtfC0alUONqoBwhE8WNel8Mr9huZshEIeQpTMqJW0/dyAckFMuyO37a43o7mULcdeCMqsDyyH5ZUzyAhaRxX1Q/3y8yw2DLTSQBQw3OzPs1X4I5CYaS/J7pIiHMYw== rsa-key-20200319",
-  "localAD": "uFjs:EU-FRANKFURT-1-AD-1"
-}

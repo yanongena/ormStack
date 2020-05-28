@@ -75,3 +75,27 @@ resource "oci_core_instance" "TFInstance" {
     create = "60m"
   }
 }
+
+resource "null_resource" "remote-exec" {
+  depends_on = ["oci_core_instance.TFInstance"]
+
+  provisioner "remote-exec" {
+    connection {
+      agent       = false
+      timeout     = "30m"
+      host        = "${oci_core_instance.TFInstance.*.public_ip[0]}"
+      user        = "opc"
+      private_key = "${var.ssh_private_key}"
+    }
+
+    inline = [
+      "sudo yum -y install git",
+      "sudo yum -y install nodejs",
+      "mkdir app",
+      "cd app",
+      "git clone https://github.com/yanongena/ormStack.git",
+      "cd ormStack",
+      "npm start"
+    ]
+  }
+}
