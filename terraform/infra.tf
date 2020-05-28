@@ -100,6 +100,7 @@ resource "null_resource" "remote-exec" {
       "cd app",
       "git clone https://github.com/yanongena/ormStack.git",
       "cd ormStack",
+      "npm install",
       "npm start"
     ]
   }

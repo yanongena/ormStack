@@ -10,15 +10,6 @@ variable "imageOCID" {
   default = "image"
 }
 
-
-variable "ssh_public_key" {
-  default = "ssh-rsa <public_key_value>"
-}
-
-variable "ssh_private_key" {
-  default = ""
-}
-
 # Defines the number of instances to deploy
 variable "NumInstances" {
   default = "1"
