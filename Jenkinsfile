@@ -20,11 +20,11 @@ pipeline {
                       '''
                     if(env.stackOcid == '' || env.stackOcid == null){
                         echo "Stack does not yet exist"
-                        sh '/var/lib/jenkins/bin/oci resource-manager stack create -c '+env.compartment+' --config-source terraform/stack.zip --display-name '+env.JOB_NAME+' --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+',\"ssh_private_key\":\"'+env.ociPrivate+'\"}\' | jq \'.data.id\''
+                        sh '/var/lib/jenkins/bin/oci resource-manager stack create -c '+env.compartment+' --config-source terraform/stack.zip --display-name '+env.JOB_NAME+' --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+'\",\"ssh_private_key\":\"'+env.ociPrivate+'\"}\' | jq \'.data.id\''
                      }
                     else {
                         echo "Stack already exist, so updating"
-                        sh '/var/lib/jenkins/bin/oci resource-manager stack update --force --config-source terraform/stack.zip --display-name '+env.JOB_NAME+' --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+',\"ssh_private_key\":\"'+env.ociPrivate+'\"}\' --stack-id '+env.stackOcid
+                        sh '/var/lib/jenkins/bin/oci resource-manager stack update --force --config-source terraform/stack.zip --display-name '+env.JOB_NAME+' --variables \'{\"imageOCID\":\"'+env.image+'\",\"compartment_ocid\":\"'+env.compartment+'\",\"localAD\":\"'+env.ad+'\",\"region\":\"'+env.region+'\",\"ssh_public_key\":\"'+env.ociSSL+'\",\"ssh_private_key\":\"'+env.ociPrivate+'\"}\' --stack-id '+env.stackOcid
                     }
 
                 }
